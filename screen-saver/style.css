@@ -14,5 +14,17 @@
   letter-spacing: 1px;
 }
 
-.fade-in-image {
+.fade-in-image img {
+  animation-name: fade;
+  animation-duration: 10s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
