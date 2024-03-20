@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.clock {
+  position: absolute;
+  top: 80%;
+  left: 80%;
+  transform: translateX(-50%) translateY(-50%);
+  color: #ded1f7;
+  font-size: 15px;
+  font-family: "Righteous", cursive;
+  letter-spacing: 1px;
+}
+
+.fade-in-image {
+}
