@@ -1,6 +1,14 @@
+/*
+
+function displayDate() {
+  document.getElementById("loop-demo").innerHTML = Date();
+}
+
+*/
+
 //While Loop
 
-while (i < 10) {}
+//while (i < 10) {}
 //ForLoop
 /*
 let text = "";
