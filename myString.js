@@ -37,8 +37,52 @@ let listMembers = [
   "Sadeed",
   "Suze",
   "Jonathan",
-  "Suzan",
+  "Charlaine",
+  "Syed",
+  "Salah",
 ];
+
+let x = listMembers.length - 1;
+
+//console.log(listMembers[x]);
+//console.log();
+
+//console.log(listMembers[listMembers.length - 1]);
+//console.log(listMembers.length);
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits);
+
+fruits.push("Kiwi");
+console.log(fruits);
+
+let myFruitString = fruits.toString();
+console.log(myFruitString);
+
+let myFruitStringSplit = myFruitString.split(",");
+console.log(myFruitStringSplit);
+//document.getElementById("demo").innerHTML = fruits.toString();
+
+let myNamesString = "Sadeed|Hamilton|sadeed@gmail.com|6479397860";
+console.log(myNamesString);
+
+let myNamesArray = myNamesString.split("|");
+console.log(myNamesArray);
+
+const person = {
+  firstName: "John",
+  City: "Hamilton",
+  email: "sadeed@abc.com",
+  phone: "6479397860",
+};
+
+console.log(person);
+
+console.log(person.firstName);
+console.log(person.City);
+console.log(person.phone);
+
+//console.log(listMembers.sort());
 
 let html = `<h1>${myListHeading}</h1> <ul> `;
 
