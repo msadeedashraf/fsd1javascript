@@ -1,3 +1,75 @@
+const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0, 200));
+
+// request a weekday along with a long date
+let options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+console.log(new Intl.DateTimeFormat("de-DE", options).format(date));
+// "Donnerstag, 20. Dezember 2012"
+
+// an application may want to use UTC and make that visible
+options.timeZone = "UTC";
+options.timeZoneName = "short";
+console.log(new Intl.DateTimeFormat("en-US", options).format(date));
+// "Thursday, December 20, 2012, GMT"
+
+// sometimes you want to be more precise
+options = {
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  timeZone: "Australia/Sydney",
+  timeZoneName: "short",
+};
+console.log(new Intl.DateTimeFormat("en-AU", options).format(date));
+// "2:00:00 pm AEDT"
+
+// sometimes you want to be very precise
+options.fractionalSecondDigits = 3; //number digits for fraction-of-seconds
+console.log(new Intl.DateTimeFormat("en-AU", options).format(date));
+// "2:00:00.200 pm AEDT"
+
+// sometimes even the US needs 24-hour time
+options = {
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  hour12: false,
+  timeZone: "America/Los_Angeles",
+};
+console.log(new Intl.DateTimeFormat("en-US", options).format(date));
+// "12/19/2012, 19:00:00"
+
+// to specify options but use the browser's default locale, use undefined
+console.log(new Intl.DateTimeFormat(undefined, options).format(date));
+// "12/19/2012, 19:00:00"
+
+// sometimes it's helpful to include the period of the day
+options = { hour: "numeric", dayPeriod: "short" };
+console.log(new Intl.DateTimeFormat("en-US", options).format(date));
+// 10 at night
+
+//Date
+/*
+const d = new Date("2022-03-25");
+
+console.log(d);
+//let mydate = new Intl.DateTimeFormat("en-US", options).format(d);
+//console.log(mydate);
+
+const options = { weekday: "long"
+ };
+console.log(new Intl.DateTimeFormat("en-UK", options).format(d));
+
+document.getElementById("demo").innerHTML = d;
+*/
+
 /*
 
 function displayDate() {
