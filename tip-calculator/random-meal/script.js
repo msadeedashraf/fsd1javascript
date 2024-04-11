@@ -1,43 +1,45 @@
-fetch("https://www.themealdb.com/api/json/v1/1/random.php") //// Replace with your actual JSON file or API endpoint URL
-  .then((response) => response.json())
-  .then((data) => {
-    data.meals[0];
-    //console.log(data.meals); //testing to see if the data is pickedup from json file or not
-  })
-  .catch((error) =>
-    console.error("Error fetching json data, please check your url", error)
-  );
+const meal_container = document.getElementById("meal");
+const meal_button = document.getElementById("get-meal");
 
-let myMealData = data.meals[0];
+meal_button.addEventListener("click", () => {
+  fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+    .then((response) => response.json())
+    .then((response) => {
+      createMealHtml(response.meals[0]);
+    });
+});
 
-console.log(myMealData);
+const createMealHtml = (meal) => {
+  const ingList = [];
 
-let myMeal = `       <div class="row">
+  for (let i = 1; i <= 20; i++) {
+    if (meal[`strIngredient${i}`]) {
+      ingList.push(
+        `${meal[`strIngredient${i}`]} -    ${meal[`strMeasure${i}`]} `
+      );
+    } else {
+      break;
+    }
+  }
+
+  const myMeal = `<div class="row">
           <div class="columns five">
             <img
-              src=${data.meals[0].strMealThumb}
+              src="${meal.strMealThumb}"
               alt="Meal Image"
             />
-            <p><strong>Category:</strong> Miscellaneous</p>
-            <p><strong>Area:</strong> Canadian</p>
-            <p><strong>Tags:</strong> UnHealthy, Speciality, HangoverFood</p>
+            <p><strong>Category:</strong> ${meal.strCategory}</p>
+            <p><strong>Area:</strong> ${meal.strArea}</p>
+            <p><strong>Tags:</strong> ${meal.strTags}</p>
             <h5>Ingredients:</h5>
             <ul>
-              <li>Vegetable Oil - Dash</li>
-              <li>Beef Gravy - 1 Can</li>
-              <li>Potatoes - 5 thin cut</li>
-              <li>Cheese Curds - 2 cups</li>
+             ${ingList.map((ingList) => `<li>${ingList}</li>`).join("")}
             </ul>
           </div>
           <div class="columns seven">
-            <h4>Poutine</h4>
+            <h4>${meal.strMeal}</h4>
             <p>
-              Heat oil in a deep fryer or deep heavy skillet to 365°F (185°C).
-              Warm gravy in saucepan or microwave. Place the fries into the hot
-              oil, and cook until light brown, about 5 minutes. Remove to a
-              paper towel lined plate to drain. Place the fries on a serving
-              platter, and sprinkle the cheese over them. Ladle gravy over the
-              fries and cheese, and serve immediately.
+             ${meal.strInstructions}
             </p>
           </div>
         </div>
@@ -48,10 +50,11 @@ let myMeal = `       <div class="row">
             <iframe
               width="420"
               height="315"
-              src="https://www.youtube.com/embed/UVAMAoA2_WU"
+              src="http://www.youtube.com/embed/${meal.strYoutube.slice(-11)}"
             >
             </iframe>
           </div>
         </div>`;
 
-document.getElementById("meal").innerHTML = myMeal;
+  meal_container.innerHTML = myMeal;
+};
