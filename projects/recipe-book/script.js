@@ -42,9 +42,9 @@ function displyHtml(allRecipes) {
       `;
   }
 
-  console.log(myHtml);
+  //console.log(myHtml);
 
-  console.log(myULHTML + myHtml + "</ul>");
+  //console.log(myULHTML + myHtml + "</ul>");
 
   document.getElementById("main-container").innerHTML =
     myULHTML + myHtml + "</ul>";
