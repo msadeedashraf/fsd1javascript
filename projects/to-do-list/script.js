@@ -64,10 +64,12 @@ function toDoList(task) {
     liE1.remove();
     updateStorage();
   });
+
+  updateStorage();
 }
 
 function updateStorage() {
-  const liE1s = document.querySelector("li");
+  const liE1s = document.querySelectorAll("li");
   console.log(liE1s);
   list = [];
 
