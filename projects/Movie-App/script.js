@@ -23,7 +23,7 @@ const get_movie = (value = "spiderman") => {
 const search = (event) => {
   event.preventDefault();
   const value = document.querySelector(".header_form-input").value;
-
+  // console.log(value);
   get_movie(value);
 };
 
